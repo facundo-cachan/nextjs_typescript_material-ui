@@ -1,8 +1,10 @@
+import CustomTheme from "./theme";
 import { Containers, Grids } from "./layouts";
 import { Drawers, Menus } from "./navigation";
 import { AppBars, Cards } from "./surfaces";
 
-const { ContainerFixed, ContainerFluid } = Containers,
+const { Copyright, Link, ProTip, Style } = CustomTheme,
+  { ContainerFixed, ContainerFluid } = Containers,
   { GridAuto, GridBasic, GridComplex, GridNested, GridSpacing } = Grids,
   { DrawerMini, DrawerPersistent, DrawerTemporary } = Drawers,
   { MenuContext, MenuThreePoints } = Menus,
@@ -10,10 +12,27 @@ const { ContainerFixed, ContainerFluid } = Containers,
   { CardSimple, CardInteraction, CardMedia } = Cards;
 
 export {
-  ContainerFixed, ContainerFluid,
-  GridAuto, GridBasic, GridComplex, GridNested, GridSpacing,
-  DrawerMini, DrawerPersistent, DrawerTemporary,
-  MenuContext, MenuThreePoints,
-  AppBarMenu, AppBarPrimarySearch, AppBarSearch, AppBarSimple,
-  CardSimple, CardInteraction, CardMedia
+  Copyright,
+  Link,
+  ProTip,
+  Style,
+  ContainerFixed,
+  ContainerFluid,
+  GridAuto,
+  GridBasic,
+  GridComplex,
+  GridNested,
+  GridSpacing,
+  DrawerMini,
+  DrawerPersistent,
+  DrawerTemporary,
+  MenuContext,
+  MenuThreePoints,
+  AppBarMenu,
+  AppBarPrimarySearch,
+  AppBarSearch,
+  AppBarSimple,
+  CardSimple,
+  CardInteraction,
+  CardMedia,
 };

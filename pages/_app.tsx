@@ -3,7 +3,7 @@ import Head from "next/head";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../src/theme";
+import { Style } from "@components";
 import { AppBarPrimarySearch } from "@components";
 
 export default function MyApp(props: AppProps) {
@@ -30,7 +30,7 @@ export default function MyApp(props: AppProps) {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={Style}>
         <AppBarPrimarySearch />
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
