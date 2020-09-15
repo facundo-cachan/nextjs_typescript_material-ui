@@ -20,7 +20,11 @@ const useStyles = makeStyles({
   fullList: {
     width: "auto",
   },
-});
+}), items = [
+  { path: "/", text: "Home", icon: "home" },
+  { path: "/about", text: "About", icon: "adb" },
+  { path: "/ingreso", text: "Acceso", icon: "lock-open" },
+];
 
 type Anchor = "left";
 
@@ -49,11 +53,7 @@ export default function DrawerTemporary() {
         onKeyDown={toggleDrawer(anchor, false)}
       >
         <List>
-          {[
-            { path: "/", text: "Home", icon: "home" },
-            { path: "/about", text: "About", icon: "adb" },
-            { path: "/other", text: "Other", icon: "adjust" },
-          ].map(({ path, text, icon }, index) => (
+          {items.map(({ path, text, icon }, index) => (
             <Link key={index} href={path}>
               <ListItem button>
                 <ListItemIcon>

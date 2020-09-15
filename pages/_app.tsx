@@ -1,15 +1,12 @@
-import React from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import { AppProps } from "next/app";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider, CssBaseline } from "@material-ui/core";
 import { Style } from "@components";
-import { AppBarPrimarySearch } from "@components";
-
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
@@ -20,7 +17,7 @@ export default function MyApp(props: AppProps) {
   return (
     <>
       <Head>
-        <title>My page</title>
+        <title>Default title</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -31,7 +28,6 @@ export default function MyApp(props: AppProps) {
         />
       </Head>
       <ThemeProvider theme={Style}>
-        <AppBarPrimarySearch />
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Component {...pageProps} />

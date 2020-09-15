@@ -16,6 +16,8 @@ import {
   MenuItem,
   Menu,
 } from "@material-ui/core";
+import { app_name } from "package.json";
+
 import { DrawerTemporary } from "@components";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -66,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) =>
       transition: theme.transitions.create("width"),
       width: "100%",
       [theme.breakpoints.up("md")]: {
-        width: "20ch",
+        width: "30ch",
       },
     },
     sectionDesktop: {
@@ -174,14 +176,14 @@ export default function AppBarPrimarySearch() {
             <DrawerTemporary />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            {app_name}
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <Icon>search</Icon>
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="Buscar ..."
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

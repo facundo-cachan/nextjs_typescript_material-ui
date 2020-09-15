@@ -1,14 +1,39 @@
 {
   "name": "nextjs_typescript_material-ui",
+  "app_name": "Populus",
   "version": "2.0.0",
   "private": true,
+  "description": "Producción comunitaria de alimentos agroecologicos 🌽🥬",
+  "social": {
+    "facebook": {
+      "user": "Populus.alimentos",
+      "url": "https://facebook.com/",
+      "text": "Facebook"
+    },
+    "instagram": {
+      "user": "populusalimentos",
+      "url": "https://instagram.com",
+      "text": "Instagram"
+    },
+    "email": {
+      "user": "populusalimentos",
+      "url": "mailto",
+      "text": "Email"
+    },
+    "phone": {
+      "user": "541140003000",
+      "url": "tel",
+      "text": "Telefono"
+    }
+  },
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
     "clsx": "latest",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-material-ui-carousel": "^1.8.3"
   },
   "scripts": {
     "clean": "rm -rf .next && rm -rf build",
