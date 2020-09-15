@@ -1,6 +1,5 @@
 import Head from "next/head";
 import {
-  IntCard,
   AppBarPrimarySearch,
   Carousel,
   GridAuto,
@@ -16,6 +15,7 @@ import {
   Divider
 } from "@material-ui/core";
 import { app_name } from "../package.json";
+import { IntCard } from "components/surfaces/cards/interfaces";
 export default function Index() {
   const classes = makeStyles((theme: Theme) =>
       createStyles({

@@ -10,13 +10,13 @@ import {
   Typography,
   Icon,
 } from "@material-ui/core";
-import IntCard from "./interfaces";
+import { IntCard } from "./interfaces";
 
 export default function MediaCard({ img, title, name, text }: IntCard) {
   const classes = makeStyles({
     root: {
       maxWidth: 345,
-      margin: "1rem"
+      margin: "1rem",
     },
     media: {
       height: 140,

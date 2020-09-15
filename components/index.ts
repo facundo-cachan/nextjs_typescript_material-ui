@@ -9,7 +9,7 @@ const { Carousel, Copyright, Footer, Link, ProTip, Style } = CustomTheme,
   { DrawerMini, DrawerPersistent, DrawerTemporary } = Drawers,
   { MenuContext, MenuThreePoints } = Menus,
   { AppBarMenu, AppBarPrimarySearch, AppBarSearch, AppBarSimple } = AppBars,
-  { IntCard, CardSimple, CardInteraction, CardMedia } = Cards;
+  { CardSimple, CardInteraction, CardMedia } = Cards;
 
 export {
   Carousel,
@@ -34,7 +34,6 @@ export {
   AppBarPrimarySearch,
   AppBarSearch,
   AppBarSimple,
-  IntCard,
   CardSimple,
   CardInteraction,
   CardMedia,
