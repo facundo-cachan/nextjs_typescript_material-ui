@@ -54,6 +54,7 @@ export default function CenteredGrid() {
       name: "Picada",
       text: "Picada de quesos, pan y vinos",
     };
+
   return (
     <footer className={classes.root}>
       <Grid container spacing={3}>
@@ -61,24 +62,25 @@ export default function CenteredGrid() {
           <CardMedia {...Adds} />
         </Grid>
         <Grid item xs={6}>
-          <List component="nav" aria-label="contacts">
-            {Object.keys(social).map((network: any, i: any) => {
-              const { url, user, text }: Social = network;
-              return (
-                <ListItem key={i} button>
-                  <ListItemIcon className={classes.listIcon}>
-                    <Link
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={`${url}/${user}`}
-                    >
-                      {listIcons(text)}
-                    </Link>
-                  </ListItemIcon>
-                  <ListItemText primary={user} />
-                </ListItem>
-              );
-            })}
+          <List component="nav" aria-label="contacto">
+            {Object.values(social).map(
+              ({ url, user, text }: Social, i: any) => {
+                return (
+                  <ListItem key={i} button>
+                    <ListItemIcon className={classes.listIcon}>
+                      <Link
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={`${url}${user}`}
+                      >
+                        {listIcons(text)}
+                      </Link>
+                    </ListItemIcon>
+                    <ListItemText primary={user} />
+                  </ListItem>
+                );
+              }
+            )}
           </List>
         </Grid>
       </Grid>
