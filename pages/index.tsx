@@ -12,7 +12,7 @@ import {
   Theme,
   Grid,
   Paper,
-  Divider
+  Divider,
 } from "@material-ui/core";
 import { app_name } from "../package.json";
 import { IntCard } from "components/surfaces/cards/interfaces";
@@ -54,7 +54,7 @@ export default function Index() {
       <Head>
         <title>Home</title>
       </Head>
-      <AppBarPrimarySearch AppName={app_name} />
+      <AppBarPrimarySearch appName={app_name} />
       <Carousel />
       <Grid item xs={12}>
         <Paper className={classes.title}>Ofertas</Paper>

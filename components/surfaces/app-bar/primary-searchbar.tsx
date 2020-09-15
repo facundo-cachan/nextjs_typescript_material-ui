@@ -16,8 +16,6 @@ import {
   MenuItem,
   Menu,
 } from "@material-ui/core";
-import { app_name } from "package.json";
-
 import { DrawerTemporary } from "@components";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -86,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function AppBarPrimarySearch() {
+export default function AppBarPrimarySearch({ appName }: any) {
   const classes = useStyles(),
     [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null),
     [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(
@@ -176,7 +174,7 @@ export default function AppBarPrimarySearch() {
             <DrawerTemporary />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            {app_name}
+            {appName}
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

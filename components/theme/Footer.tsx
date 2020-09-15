@@ -14,7 +14,11 @@ import { social } from "../../package.json";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import { MailOutline, PhoneIphone } from "@material-ui/icons";
-
+interface Social {
+  user: string;
+  url: string;
+  text: string;
+}
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       root: {
@@ -35,8 +39,8 @@ const useStyles = makeStyles((theme: Theme) =>
         return <FacebookIcon />;
       case "Instagram":
         return <InstagramIcon />;
-        case "Telefono":
-          return <PhoneIphone />;
+      case "Telefono":
+        return <PhoneIphone />;
       default:
         return <MailOutline />;
     }
@@ -58,20 +62,23 @@ export default function CenteredGrid() {
         </Grid>
         <Grid item xs={6}>
           <List component="nav" aria-label="contacts">
-            {Object.keys(social).map((network: any, i: any) => (
-              <ListItem key={i} button>
-                <ListItemIcon className={classes.listIcon}>
-                  <Link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={`${social[network].url}/${social[network].user}`}
-                  >
-                    {listIcons(social[network].text)}
-                  </Link>
-                </ListItemIcon>
-                <ListItemText primary={social[network].user} />
-              </ListItem>
-            ))}
+            {Object.keys(social).map((network: any, i: any) => {
+              const { url, user, text }: Social = network;
+              return (
+                <ListItem key={i} button>
+                  <ListItemIcon className={classes.listIcon}>
+                    <Link
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={`${url}/${user}`}
+                    >
+                      {listIcons(text)}
+                    </Link>
+                  </ListItemIcon>
+                  <ListItemText primary={user} />
+                </ListItem>
+              );
+            })}
           </List>
         </Grid>
       </Grid>
