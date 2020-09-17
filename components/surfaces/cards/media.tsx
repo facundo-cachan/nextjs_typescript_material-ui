@@ -1,4 +1,3 @@
-import React from "react";
 import {
   makeStyles,
   Card,
@@ -12,7 +11,13 @@ import {
 } from "@material-ui/core";
 import { IntCard } from "./interfaces";
 
-export default function MediaCard({ img, title, name, text }: IntCard) {
+export default function MediaCard({
+  children,
+  img,
+  title,
+  name,
+  text,
+}: IntCard) {
   const classes = makeStyles({
     root: {
       maxWidth: 345,
@@ -36,9 +41,13 @@ export default function MediaCard({ img, title, name, text }: IntCard) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          <Icon>share</Icon>
-        </Button>
+        {children != undefined ? (
+          children
+        ) : (
+          <Button size="small" color="primary">
+            <Icon>shared</Icon>
+          </Button>
+        )}
         <Button size="small" color="primary">
           <Icon>shopping_cart</Icon>
         </Button>

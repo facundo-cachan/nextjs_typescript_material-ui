@@ -1,19 +1,21 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Card,
+  CardMedia,
+  CardActions,
+  CardContent,
+  Typography,
+} from "@material-ui/core";
+import { IntCard } from "./interfaces";
 
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
   },
   title: {
     fontSize: 14,
@@ -23,31 +25,61 @@ const useStyles = makeStyles({
   },
 });
 
-export default function OutlinedCard() {
+export default function OutlinedCard({
+  children,
+  img,
+  title,
+  name,
+  text,
+  num,
+}: IntCard) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+        {name ? (
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
+          >
+            {name}
+          </Typography>
+        ) : (
+          <span />
+        )}
+        {title ? (
+          <Typography variant="h5" component="h2">
+            {title}
+          </Typography>
+        ) : (
+          <span />
+        )}
+        {img ? (
+          <CardMedia
+            className={classes.media}
+            image={img}
+            title={name}
+          />
+        ) : (
+          <span />
+        )}
+        {num ? (
+          <Typography className={classes.pos} color="textSecondary">
+            {num}
+          </Typography>
+        ) : (
+          <span />
+        )}
+        {text ? (
+          <Typography variant="body2" component="p">
+            {text}
+          </Typography>
+        ) : (
+          <span />
+        )}
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+      <CardActions>{children}</CardActions>
     </Card>
   );
 }

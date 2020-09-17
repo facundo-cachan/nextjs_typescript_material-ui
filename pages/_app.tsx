@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import Head from "next/head";
 import { AppProps } from "next/app";
+import { useEffect } from "react";
 import { ThemeProvider, CssBaseline } from "@material-ui/core";
 import { Style } from "@components";
 export default function MyApp(props: AppProps) {

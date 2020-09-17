@@ -3,34 +3,37 @@
   "app_name": "Populus",
   "version": "2.0.0",
   "private": true,
+  "title": "Del campo a tu mesa",
   "description": "Producción comunitaria de alimentos agroecologicos 🌽 🥬",
   "social": {
     "facebook": {
       "user": "Populus.alimentos",
       "url": "https://facebook.com/",
-      "text": "Facebook"
+      "icon": "fab fa-facebook"
     },
     "instagram": {
       "user": "populusalimentos",
       "url": "https://instagram.com",
-      "text": "Instagram"
+      "icon": "fab fa-instagram"
     },
     "email": {
       "user": "populusalimentos",
       "url": "mailto",
-      "text": "Email"
+      "icon": "fas fa-envelope"
     },
-    "phone": {
+    "telefono": {
       "user": "541140003000",
       "url": "tel",
-      "text": "Telefono"
+      "icon": "fas fa-phone"
     }
   },
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
     "clsx": "latest",
+    "fg-loadcss": "^3.1.0",
     "next": "latest",
+    "next-auth": "^3.1.0",
     "react": "latest",
     "react-dom": "latest",
     "react-material-ui-carousel": "^1.8.3"

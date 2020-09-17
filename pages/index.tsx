@@ -31,6 +31,7 @@ export default function Index() {
         img: "pan.jpg",
         title: "PAN",
         name: "Pan 🥖",
+        price: 10,
         text:
           "Llega la hora de la merienda y nada mejor que nuestro pan de campo con un poco de miel 🍯.",
       },
@@ -38,6 +39,7 @@ export default function Index() {
         img: "queso.jpg",
         title: "QUESO",
         name: "Queso 🧀",
+        price: 10,
         text:
           "Disfruta nuestros quesos en sus tres variedades: al oregano, con pimienta y natural 🌱",
       },
@@ -45,6 +47,7 @@ export default function Index() {
         img: "tomate.jpg",
         title: "TOMATE",
         name: "Tomate 🍅",
+        price: 10,
         text:
           "Estan hidratados en aceite de oliva extra virgen. Hace tu pedido que vuelan 👐",
       },
@@ -61,6 +64,7 @@ export default function Index() {
       </Grid>
       <GridAuto>
         {items.map((item: IntCard, i: any) => {
+          item.name = `${item.name} $${item.price}kg`;
           return (
             <Grid key={i} item xs className={classes.paper}>
               <CardMedia {...item} />
@@ -81,7 +85,7 @@ export default function Index() {
         })}
       </GridAuto>
       <Divider />
-      <Footer />
+      <Footer />     
     </>
   );
 }

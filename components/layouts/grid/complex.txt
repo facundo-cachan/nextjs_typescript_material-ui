@@ -1,5 +1,5 @@
 import { makeStyles, createStyles, Theme, Paper, Grid , Typography, ButtonBase} from "@material-ui/core";
-import { IntCard } from "components/surfaces/cards/interfaces";
+import { IntCard } from "../../surfaces/cards/interfaces";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
