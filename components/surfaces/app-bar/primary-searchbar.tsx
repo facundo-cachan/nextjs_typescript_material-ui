@@ -1,21 +1,20 @@
-import { useState, MouseEvent } from "react";
-import Link from "next/link";
+import React, { useState, MouseEvent } from "react";
+import { useRouter } from "next/router";
 import {
   fade,
   makeStyles,
   Theme,
   createStyles,
-} from "@material-ui/core/styles";
-import {
   AppBar,
   Toolbar,
   IconButton,
   Typography,
   InputBase,
   Badge,
-  MenuItem,
   Menu,
+  MenuItem,
 } from "@material-ui/core";
+
 import { DrawerTemporary } from "@components";
 import { userMessages } from "components/theme/mocks";
 
@@ -90,6 +89,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function AppBarPrimarySearch({ appName }: any) {
   const classes = useStyles(),
+    router = useRouter(),
     [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null),
     [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(
       null
@@ -108,6 +108,10 @@ export default function AppBarPrimarySearch({ appName }: any) {
     },
     handleMobileMenuOpen = (event: MouseEvent<HTMLElement>) => {
       setMobileMoreAnchorEl(event.currentTarget);
+    },
+    handleClick = (href: string) => {
+      handleMenuClose();
+      router.push(href);
     },
     menuId = "primary-search-account-menu",
     mobileMenuId = "primary-search-account-menu-mobile";
@@ -209,7 +213,7 @@ export default function AppBarPrimarySearch({ appName }: any) {
           >
             <i className="fas fa-users-cog" />
           </IconButton>
-          <p>Profile</p>
+          <p>Account</p>
         </MenuItem>
       </Menu>
       <Menu
@@ -219,23 +223,26 @@ export default function AppBarPrimarySearch({ appName }: any) {
         keepMounted
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         open={isMenuOpen}
-        onClose={handleMenuClose}
       >
-        <MenuItem>
-          <Link href="profile">
-            <a>
-              <i className="far fa-user-circle" />
-              <Typography variant="inherit">Mi Perfil</Typography>
-            </a>
-          </Link>
+        <MenuItem onClick={() => handleClick("profile")}>
+          <IconButton
+            aria-label="My Profile"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <i className="far fa-id-card" />
+          </IconButton>
+          <p>Profile</p>
         </MenuItem>
-        <MenuItem>
-          <Link href="about">
-            <a>
-              <i className="fas fa-sign-out-alt" />
-              <Typography variant="inherit">Salir</Typography>
-            </a>
-          </Link>
+        <MenuItem onClick={() => handleClick("about")}>
+          <IconButton
+            aria-label="LogOff"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <i className="fas fa-sign-out-alt" />
+          </IconButton>
+          <p>LogOff</p>
         </MenuItem>
       </Menu>
     </div>
