@@ -27,6 +27,11 @@
       "icon": "fas fa-phone"
     }
   },
+  "author": {
+    "email": "yo@facundo-cachan.com",
+    "name": "Facundo Cachan",
+    "homepage": "http://facundo-cachan.com/"
+  },
   "dependencies": {
     "@apollo/client": "^3.2.0",
     "@material-ui/core": "latest",

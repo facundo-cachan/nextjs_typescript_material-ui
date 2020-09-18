@@ -1,3 +1,11 @@
+export const auth = true;
+
+export const menuPrimary = [
+  { path: "/", text: "Home", icon: "far fa-play-circle" },
+  { path: "/about", text: "About", icon: "far fa-address-card" },
+  { path: "/ingreso", text: "Acceso", icon: "fas fa-sign-in-alt" },
+];
+
 export const offer = {
   img: "combo1.jpg",
   title: "Combo Picada",
@@ -56,5 +64,20 @@ export const products = [
 export const userMessages = [
   {
     id: 123,
+  },
+  {
+    id: 345,
+  },
+];
+
+export const cartShopItems = [
+  {
+    id: 123,
+  },
+  {
+    id: 345,
+  },
+  {
+    id: 456,
   },
 ];

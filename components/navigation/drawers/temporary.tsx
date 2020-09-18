@@ -11,20 +11,19 @@ import {
 } from "@material-ui/core";
 
 import Link from "next/link";
+import { menuPrimary } from "components/theme/mocks";
 
 const useStyles = makeStyles({
-    list: {
-      width: 250,
-    },
-    fullList: {
-      width: "auto",
-    },
-  }),
-  items = [
-    { path: "/", text: "Home", icon: "far fa-play-circle" },
-    { path: "/about", text: "About", icon: "far fa-address-card" },
-    { path: "/ingreso", text: "Acceso", icon: "fas fa-sign-in-alt" },
-  ];
+  root: {
+    '& .fa .fas .far .fab': { fontSize: 20 },
+  },
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: "auto",
+  },
+});
 
 type Anchor = "left";
 
@@ -53,11 +52,11 @@ export default function DrawerTemporary() {
         onKeyDown={toggleDrawer(anchor, false)}
       >
         <List>
-          {items.map(({ path, text, icon }, index) => (
+          {menuPrimary.map(({ path, text, icon }, index) => (
             <Link key={index} href={path}>
               <ListItem button>
                 <ListItemIcon>
-                <i className={icon}/>
+                  <i className={icon} />
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -71,7 +70,7 @@ export default function DrawerTemporary() {
     <div>
       {
         <>
-          <i className="fas fa-bars" onClick={toggleDrawer("left", true)}/>
+          <i className="fas fa-bars" onClick={toggleDrawer("left", true)} />
           <Drawer
             anchor="left"
             open={state["left"]}

@@ -1,17 +1,16 @@
+import { useRouter } from "next/router";
 import {
   Avatar,
   Button,
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
-  Grid,
   Box,
+  Icon,
   Typography,
   makeStyles,
   Container,
 } from "@material-ui/core";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { Copyright } from "@components";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,25 +34,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
-  const classes = useStyles();
+  const classes = useStyles(),
+    router = useRouter(),
+    fakeLogIn = () => {
+      router.push("test_component")
+    };
 
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <Icon className="fas fa-lock" />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Acceso de usuarios
         </Typography>
-        <form className={classes.form} noValidate>
+        <div className={classes.form}>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Email"
             name="email"
             autoComplete="email"
             autoFocus
@@ -71,7 +74,7 @@ export default function SignIn() {
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            label="Recordarme"
           />
           <Button
             type="submit"
@@ -79,22 +82,11 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={fakeLogIn}
           >
-            Sign In
+            Ingresar
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
+        </div>
       </div>
       <Box mt={8}>
         <Copyright />
