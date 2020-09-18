@@ -16,58 +16,34 @@ import {
 } from "@material-ui/core";
 import { app_name } from "../package.json";
 import { IntCard } from "components/surfaces/cards/interfaces";
+import { carrouselIndex, products } from "components/theme/mocks";
+
 export default function Index() {
   const classes = makeStyles((theme: Theme) =>
-      createStyles({
-        paper: {
-          padding: theme.spacing(2),
-          color: theme.palette.text.secondary,
-        },
-        title: { textAlign: "center", fontSize: "2rem", paddingTop: "2rem" },
-      })
-    )(),
-    items = [
-      {
-        img: "pan.jpg",
-        title: "PAN",
-        name: "Pan 🥖",
-        price: 10,
-        text:
-          "Llega la hora de la merienda y nada mejor que nuestro pan de campo con un poco de miel 🍯.",
+    createStyles({
+      paper: {
+        padding: theme.spacing(2),
+        color: theme.palette.text.secondary,
       },
-      {
-        img: "queso.jpg",
-        title: "QUESO",
-        name: "Queso 🧀",
-        price: 10,
-        text:
-          "Disfruta nuestros quesos en sus tres variedades: al oregano, con pimienta y natural 🌱",
-      },
-      {
-        img: "tomate.jpg",
-        title: "TOMATE",
-        name: "Tomate 🍅",
-        price: 10,
-        text:
-          "Estan hidratados en aceite de oliva extra virgen. Hace tu pedido que vuelan 👐",
-      },
-    ];
+      title: { textAlign: "center", fontSize: "2rem", paddingTop: "2rem" },
+    })
+  )();
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
       <AppBarPrimarySearch appName={app_name} />
-      <Carousel />
+      <Carousel items={carrouselIndex} />
       <Grid item xs={12}>
         <Paper className={classes.title}>Ofertas</Paper>
       </Grid>
       <GridAuto>
-        {items.map((item: IntCard, i: any) => {
-          item.name = `${item.name} $${item.price}kg`;
+        {products.map((product: IntCard, i: any) => {
+          product.name = `${product.name} $${product.price}kg`;
           return (
             <Grid key={i} item xs className={classes.paper}>
-              <CardMedia {...item} />
+              <CardMedia {...product} />
             </Grid>
           );
         })}
@@ -76,16 +52,16 @@ export default function Index() {
         <Paper className={classes.title}>Mas Vendidos</Paper>
       </Grid>
       <GridAuto>
-        {items.map((item: IntCard, i: any) => {
+        {products.map((product: IntCard, i: any) => {
           return (
             <Grid key={i} item xs className={classes.paper}>
-              <CardMedia {...item} />
+              <CardMedia {...product} />
             </Grid>
           );
         })}
       </GridAuto>
       <Divider />
-      <Footer />     
+      <Footer />
     </>
   );
 }

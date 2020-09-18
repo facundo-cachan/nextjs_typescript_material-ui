@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { Footer } from "@components";
+import { AppBarPrimarySearch } from "@components";
+// import { products } from "components/theme/mockShopCart";
 
 export default function TestComponent() {
   return (
@@ -7,7 +8,7 @@ export default function TestComponent() {
       <Head>
         <title>Testing Component</title>
       </Head>
-      <Footer />
+      <AppBarPrimarySearch appName="test_component" />
     </>
   );
 }

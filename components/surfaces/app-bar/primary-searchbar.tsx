@@ -1,4 +1,5 @@
 import { useState, MouseEvent } from "react";
+import Link from "next/link";
 import {
   fade,
   makeStyles,
@@ -10,16 +11,19 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Icon,
   InputBase,
   Badge,
   MenuItem,
   Menu,
 } from "@material-ui/core";
 import { DrawerTemporary } from "@components";
+import { userMessages } from "components/theme/mocks";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      ".fa .fas .far": { margin: "0 1rem 0 1rem" },
+    },
     grow: {
       flexGrow: 1,
     },
@@ -106,60 +110,7 @@ export default function AppBarPrimarySearch({ appName }: any) {
       setMobileMoreAnchorEl(event.currentTarget);
     },
     menuId = "primary-search-account-menu",
-    renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        id={menuId}
-        keepMounted
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-        open={isMenuOpen}
-        onClose={handleMenuClose}
-      >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      </Menu>
-    ),
-    mobileMenuId = "primary-search-account-menu-mobile",
-    renderMobileMenu = (
-      <Menu
-        anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        id={mobileMenuId}
-        keepMounted
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-        open={isMobileMenuOpen}
-        onClose={handleMobileMenuClose}
-      >
-        <MenuItem>
-          <IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <Icon>mail</Icon>
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
-          <IconButton aria-label="show 11 new notifications" color="inherit">
-            <Badge badgeContent={11} color="secondary">
-              <Icon>notification</Icon>
-            </Badge>
-          </IconButton>
-          <p>Notifications</p>
-        </MenuItem>
-        <MenuItem onClick={handleProfileMenuOpen}>
-          <IconButton
-            aria-label="account of current user"
-            aria-controls="primary-search-account-menu"
-            aria-haspopup="true"
-            color="inherit"
-          >
-            <Icon>account_circle</Icon>
-          </IconButton>
-          <p>Profile</p>
-        </MenuItem>
-      </Menu>
-    );
+    mobileMenuId = "primary-search-account-menu-mobile";
 
   return (
     <div className={classes.grow}>
@@ -178,7 +129,7 @@ export default function AppBarPrimarySearch({ appName }: any) {
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <Icon>search</Icon>
+              <i className="fas fa-search" />
             </div>
             <InputBase
               placeholder="Buscar ..."
@@ -192,14 +143,13 @@ export default function AppBarPrimarySearch({ appName }: any) {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <Icon>mail</Icon>
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <Icon>notification</Icon>
-              </Badge>
+              {userMessages && userMessages.length >= 1 ? (
+                <Badge badgeContent={userMessages.length} color="secondary">
+                  <i className="far fa-envelope" />
+                </Badge>
+              ) : (
+                <i className="far fa-envelope-open" />
+              )}
             </IconButton>
             <IconButton
               edge="end"
@@ -209,7 +159,7 @@ export default function AppBarPrimarySearch({ appName }: any) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <Icon>account_circle</Icon>
+              <i className="far fa-user-circle" />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
@@ -220,13 +170,74 @@ export default function AppBarPrimarySearch({ appName }: any) {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <Icon>more</Icon>
+              <i className="fas fa-ellipsis-v" />
             </IconButton>
           </div>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+      <Menu
+        anchorEl={mobileMoreAnchorEl}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        id={mobileMenuId}
+        keepMounted
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        open={isMobileMenuOpen}
+        onClose={handleMobileMenuClose}
+      >
+        <MenuItem>
+          <IconButton aria-label="show 4 new mails" color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <i className="far fa-envelope" />
+            </Badge>
+          </IconButton>
+          <p>Messages</p>
+        </MenuItem>
+        <MenuItem>
+          <IconButton aria-label="show 11 new notifications" color="inherit">
+            <Badge badgeContent={11} color="secondary">
+              <i className="fas fa-comment-alt" />
+            </Badge>
+          </IconButton>
+          <p>Notifications</p>
+        </MenuItem>
+        <MenuItem onClick={handleProfileMenuOpen}>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <i className="fas fa-users-cog" />
+          </IconButton>
+          <p>Profile</p>
+        </MenuItem>
+      </Menu>
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        id={menuId}
+        keepMounted
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        open={isMenuOpen}
+        onClose={handleMenuClose}
+      >
+        <MenuItem>
+          <Link href="profile">
+            <a>
+              <i className="far fa-user-circle" />
+              <Typography variant="inherit">Mi Perfil</Typography>
+            </a>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link href="about">
+            <a>
+              <i className="fas fa-sign-out-alt" />
+              <Typography variant="inherit">Salir</Typography>
+            </a>
+          </Link>
+        </MenuItem>
+      </Menu>
     </div>
   );
 }

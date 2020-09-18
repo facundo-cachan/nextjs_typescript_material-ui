@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { loadCSS } from 'fg-loadcss';
 import {
   makeStyles,
   createStyles,
@@ -15,7 +13,7 @@ import {
 } from "@material-ui/core";
 import { CardInteraction, CardSimple } from "@components";
 import { app_name, title, description, social } from "../../package.json";
-
+import { offer } from "components/theme/mocks";
 interface Social {
   user: string;
   url: string;
@@ -24,9 +22,7 @@ interface Social {
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       root: {
-        '& > .fa': {
-          margin: theme.spacing(2),
-        },
+        '& .fas': { fontSize: 20 },
         flexGrow: 1,
         padding: "1rem",
         justifyItems: "center",
@@ -41,40 +37,14 @@ const useStyles = makeStyles((theme: Theme) =>
   );
 
 export default function Footer() {
-  const classes = useStyles(),
-    Adds = {
-      img: "combo1.jpg",
-      title: "Combo Picada",
-      name: "Seleccion de nuestro maestro quesero.",
-      text: "Picada de quesos, pan y vinos,",
-      num: 300,
-      recipe: [
-        "Jamón cocido natural.",
-        "Bondiola natural.",
-        "Jamón crudo natural.",
-        "Salame de Colonia Caroya.",
-        "Queso gouda.",
-        "Longaniza a la calabresa.",
-        "Queso brindamour de ají.",
-        "Queso brindamour de orégano.",
-      ],
-    };
-    useEffect(() => {
-      const node = loadCSS(
-        'https://use.fontawesome.com/releases/v5.12.0/css/all.css',
-        document.querySelector('#font-awesome-css'),
-      );
-      return () => {
-        node.parentNode!.removeChild(node);
-      };
-    }, []);
+  const classes = useStyles();
   return (
     <footer className={classes.root}>
       <Grid container justify="center" alignItems="center" spacing={3}>
         <Grid className={classes.paper} item xs={"auto"}>
-          <CardInteraction {...Adds}>
+          <CardInteraction {...offer}>
             <Button size="small" color="primary">
-              <Icon>shopping_cart</Icon>
+            <i className="fas fa-shopping-cart" />
             </Button>
           </CardInteraction>
         </Grid>

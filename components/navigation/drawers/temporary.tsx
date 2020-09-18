@@ -8,23 +8,23 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Icon,
 } from "@material-ui/core";
 
 import Link from "next/link";
 
 const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: "auto",
-  },
-}), items = [
-  { path: "/", text: "Home", icon: "home" },
-  { path: "/about", text: "About", icon: "adb" },
-  { path: "/ingreso", text: "Acceso", icon: "lock-open" },
-];
+    list: {
+      width: 250,
+    },
+    fullList: {
+      width: "auto",
+    },
+  }),
+  items = [
+    { path: "/", text: "Home", icon: "far fa-play-circle" },
+    { path: "/about", text: "About", icon: "far fa-address-card" },
+    { path: "/ingreso", text: "Acceso", icon: "fas fa-sign-in-alt" },
+  ];
 
 type Anchor = "left";
 
@@ -57,7 +57,7 @@ export default function DrawerTemporary() {
             <Link key={index} href={path}>
               <ListItem button>
                 <ListItemIcon>
-                  <Icon>{icon}</Icon>
+                <i className={icon}/>
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -71,7 +71,7 @@ export default function DrawerTemporary() {
     <div>
       {
         <>
-          <Icon onClick={toggleDrawer("left", true)}>menu</Icon>
+          <i className="fas fa-bars" onClick={toggleDrawer("left", true)}/>
           <Drawer
             anchor="left"
             open={state["left"]}

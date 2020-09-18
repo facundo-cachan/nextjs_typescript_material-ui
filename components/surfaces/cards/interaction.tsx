@@ -81,7 +81,7 @@ export default function RecipeReviewCard({
           children
         ) : (
           <Button size="small" color="primary">
-            <Icon>shared</Icon>
+            <Icon className="fas fa-share-alt"/>
           </Button>
         )}
         <IconButton
@@ -92,7 +92,7 @@ export default function RecipeReviewCard({
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <Icon>expand_more</Icon>
+          <Icon className="fas fa-chevron-down"/>
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>

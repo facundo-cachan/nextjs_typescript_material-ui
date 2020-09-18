@@ -1,7 +1,7 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
-import { Style, ContainerFluid } from "@components";
+import { Style } from "@components";
 export default class MyDocument extends Document {
   render() {
     return (
@@ -15,9 +15,7 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          <ContainerFluid>
-            <Main/>
-          </ContainerFluid>
+        <Main/>
           <NextScript />
         </body>
       </Html>

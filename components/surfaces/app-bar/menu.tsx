@@ -27,22 +27,19 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function MenuAppBar() {
-  const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAuth(event.target.checked);
-  };
-
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const classes = useStyles(),
+    [auth, setAuth] = React.useState(true),
+    [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null),
+    open = Boolean(anchorEl),
+    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setAuth(event.target.checked);
+    },
+    handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+      setAnchorEl(event.currentTarget);
+    },
+    handleClose = () => {
+      setAnchorEl(null);
+    };
 
   return (
     <div className={classes.root}>
@@ -66,7 +63,7 @@ export default function MenuAppBar() {
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
+            <i className="fas fa-bars" />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Photos

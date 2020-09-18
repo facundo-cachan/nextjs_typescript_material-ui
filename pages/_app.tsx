@@ -1,8 +1,15 @@
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Head from "next/head";
 import { AppProps } from "next/app";
 import { useEffect } from "react";
 import { ThemeProvider, CssBaseline } from "@material-ui/core";
 import { Style } from "@components";
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/',
+  cache: new InMemoryCache()
+});
+
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
 
@@ -15,7 +22,7 @@ export default function MyApp(props: AppProps) {
   }, []);
 
   return (
-    <>
+    <ApolloProvider client={client}>
       <Head>
         <title>Default title</title>
         <meta
@@ -24,7 +31,7 @@ export default function MyApp(props: AppProps) {
         />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
         />
       </Head>
       <ThemeProvider theme={Style}>
@@ -32,6 +39,6 @@ export default function MyApp(props: AppProps) {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </ApolloProvider>
   );
 }
